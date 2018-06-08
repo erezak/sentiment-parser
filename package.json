@@ -1,0 +1,49 @@
+{
+  "name": "sentiment-parser",
+  "version": "0.0.101",
+  "description": "The sentiment-parser package is used to easily parse sentiments from sentences, using a simple one-liner.",
+  "main": "lib/parser.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "debug": "node --nolazy --inspect-brk=9229 lib/parser.js",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "postversion" : "git push && git push --tags",
+    "prepare" : "npm run build",
+    "prepublishOnly" : "npm test && npm run lint",
+    "preversion" : "npm run lint",
+    "test": "jest --config jestconfig.json",
+    "test:w": "jest --config jestconfig.json --watchAll",
+    "version" : "npm run format && git add -A src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/erezak/sentiment-parser.git"
+  },
+  "keywords": [
+    "watson",
+    "sentiment",
+    "analysis",
+    "feelings"
+  ],
+  "author": "Erez A. Korn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erezak/sentiment-parser/issues"
+  },
+  "homepage": "https://github.com/erezak/sentiment-parser#readme",
+  "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "@types/watson-developer-cloud": "^2.40.0",
+    "jest": "^23.1.0",
+    "prettier": "^1.13.4",
+    "ts-jest": "^22.4.6",
+    "tslint": "^5.10.0",
+    "tslint-config-prettier": "^1.13.0",
+    "typescript": "^2.9.1"
+  },
+  "dependencies": {
+    "watson-developer-cloud": "^3.4.5"
+  }
+}
