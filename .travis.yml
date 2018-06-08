@@ -1,0 +1,16 @@
+language: nodejs
+
+before_script:
+  - npm run setup
+  - npm run build
+
+script:
+  - npm test
+
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: $EMAIL
+    api_key: $NPM_TOKEN
+    on:
+      tags: true

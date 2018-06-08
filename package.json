@@ -13,6 +13,7 @@
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
+    "setup": "npm install",
     "test": "jest --config jestconfig.json",
     "test:w": "jest --config jestconfig.json --watchAll",
     "version": "npm run format && git add -A src"
