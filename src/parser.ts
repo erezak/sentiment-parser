@@ -4,31 +4,31 @@ const confidencethreshold = 0.55;
 
 export interface ICredentials {
   toneAnalyzer: {
-    username: string,
-    password: string
-  },
+    username: string;
+    password: string;
+  };
   nlAnalyzer: {
-    username: string,
-    password: string
-  }
+    username: string;
+    password: string;
+  };
 }
 
 export interface ITone {
-  tone_id: string,
-  tone_name: string,
-  score: number
+  tone_id: string;
+  tone_name: string;
+  score: number;
 }
 
 export interface IParsedTone {
   watsonTone: {
-    strongestTone: ITone,
-    allTones: ITone[]
-  }
+    strongestTone: ITone;
+    allTones: ITone[];
+  };
 }
 
 export interface IParsedSentiment {
-  label: string,
-  score: number
+  label: string;
+  score: number;
 }
 
 export class Parser {
@@ -49,7 +49,7 @@ export class Parser {
           username: credentials.nlAnalyzer.username, // tslint:disable-next-line:object-literal-sort-keys
           password: credentials.nlAnalyzer.password,
           version: '2018-04-05',
-          url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
+          url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/',
         });
       }
 
@@ -66,32 +66,32 @@ export class Parser {
 
   public parseSentiment(sentence: string): Promise<IParsedSentiment> {
     return new Promise<IParsedSentiment>((resolve: any, reject: any) => {
-
       if (this.watsonCredentials!.nlAnalyzer) {
-
-        this.naturalLanguageAnalyzer.analyze({
-          text: sentence, // tslint:disable-next-line:object-literal-sort-keys
-          features: {
-            concepts: {},
-            keywords: {},
-            sentiment: { document: true },
+        this.naturalLanguageAnalyzer.analyze(
+          {
+            text: sentence, // tslint:disable-next-line:object-literal-sort-keys
+            features: {
+              concepts: {},
+              keywords: {},
+              sentiment: { document: true },
+            },
+            language: 'en',
           },
-          language: "en"
-        }, (err: Error, response: any) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(response.sentiment.document as IParsedSentiment);
-          }
-        });
+          (err: Error, response: any) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(response.sentiment.document as IParsedSentiment);
+            }
+          },
+        );
       } else {
-        reject(new Error("You must set credentials in order to use the Watson Natural Language Credentials"))
+        reject(new Error('You must set credentials in order to use the Watson Natural Language Credentials'));
       }
     });
   }
 
   public parseEmotion(sentence: string): Promise<IParsedTone> {
-
     return new Promise<IParsedTone>((resolve: any, reject: any) => {
       if (this.watsonCredentials!.toneAnalyzer) {
         const parsedSentiment = {} as IParsedTone;
@@ -114,7 +114,7 @@ export class Parser {
                 // tslint:disable-next-line:no-console
                 parsedSentiment.watsonTone = {
                   allTones: tonecategory.tones as ITone[],
-                  strongestTone: strongestTone as ITone
+                  strongestTone: strongestTone as ITone,
                 };
                 resolved = true;
                 resolve(parsedSentiment);
@@ -126,7 +126,7 @@ export class Parser {
           }
         });
       } else {
-        reject(new Error("You must set credentials in order to use the Watson Natural Language Credentials"))
+        reject(new Error('You must set credentials in order to use the Watson Natural Language Credentials'));
       }
     });
   }

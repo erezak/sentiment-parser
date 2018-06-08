@@ -1,6 +1,6 @@
 {
   "name": "sentiment-parser",
-  "version": "0.0.101",
+  "version": "0.0.102",
   "description": "The sentiment-parser package is used to easily parse sentiments from sentences, using a simple one-liner.",
   "main": "lib/parser.js",
   "types": "lib/index.d.ts",
@@ -9,13 +9,13 @@
     "debug": "node --nolazy --inspect-brk=9229 lib/parser.js",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "postversion" : "git push && git push --tags",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
     "test": "jest --config jestconfig.json",
     "test:w": "jest --config jestconfig.json --watchAll",
-    "version" : "npm run format && git add -A src"
+    "version": "npm run format && git add -A src"
   },
   "repository": {
     "type": "git",
