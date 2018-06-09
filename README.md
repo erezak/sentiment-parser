@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/erezak/sentiment-parser.svg?branch=master)](https://travis-ci.org/erezak/sentiment-parser)
+[![Build Status](https://travis-ci.org/erezak/sentiment-parser.svg?branch=master)](https://travis-ci.org/erezak/sentiment-parser)  [![codecov](https://codecov.io/gh/erezak/sentiment-parser/branch/master/graph/badge.svg)](https://codecov.io/gh/erezak/sentiment-parser)
 
 # Sentiment Parser
 
