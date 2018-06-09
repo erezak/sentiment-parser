@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/erezak/sentiment-parser.svg?branch=master)](https://travis-ci.org/erezak/sentiment-parser)
+
 # Sentiment Parser
 
 ## Description
