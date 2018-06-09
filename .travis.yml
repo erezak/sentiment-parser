@@ -2,10 +2,14 @@ language: nodejs
 
 before_script:
   - npm run setup
+  - npm install codecov -g
   - npm run build
 
 script:
   - npm test
+
+after_success:
+  - codecov
 
 deploy:
   - provider: npm
