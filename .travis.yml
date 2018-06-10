@@ -9,7 +9,7 @@ script:
   - npm test
 
 after_success:
-  - codecov --token $CODECOV_TOKEN
+  - bash <(curl -s https://codecov.io/bash)
 
 deploy:
   - provider: npm
