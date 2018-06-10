@@ -10,5 +10,15 @@
         "jsx",
         "json",
         "node"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+        "/node_modules/",
+        "/lib/"
+    ],
+    "coverageReporters": [
+        "html",
+        "json"
     ]
 }
