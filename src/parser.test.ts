@@ -115,4 +115,3 @@ it('should return error when tone analyzer fails to parse', () => {
 
   return expect(parser.parseEmotion('Just testing')).rejects.toBeInstanceOf(Error);
 });
-
