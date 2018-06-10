@@ -77,8 +77,42 @@ it('should containt a sentiment', () => {
   });
 });
 
+it('should return error when NL analyzer returns error', () => {
+  expect.assertions(1);
+  analyze.mockImplementation((_, cb) => {
+    cb(new Error('error from test'), null);
+  });
+
+  return expect(parser.parseSentiment('Just testing')).rejects.toBeInstanceOf(Error);
+});
+
 it('should not work with Natural Language Analyzer when there are no credentials', () => {
   expect.assertions(1);
-  parser.setCredentials(undefined);
+  parser.setCredentials({} as ICredentials);
   return expect(parser.parseSentiment(`I don't have credentials`)).rejects.toBeInstanceOf(Error);
 });
+
+it('should not work with Tone Analyzer when there are no credentials', () => {
+  expect.assertions(1);
+  parser.setCredentials({} as ICredentials);
+  return expect(parser.parseEmotion(`I don't have credentials`)).rejects.toBeInstanceOf(Error);
+});
+
+it('should return error when tone analyzer returns error', () => {
+  expect.assertions(1);
+  tone.mockImplementation((_, cb) => {
+    cb(new Error('error from test'), null);
+  });
+
+  return expect(parser.parseEmotion('Just testing')).rejects.toBeInstanceOf(Error);
+});
+
+it('should return error when tone analyzer fails to parse', () => {
+  expect.assertions(1);
+  tone.mockImplementation((_, cb) => {
+    cb(null, { document_tone: { tone_categories: [] } });
+  });
+
+  return expect(parser.parseEmotion('Just testing')).rejects.toBeInstanceOf(Error);
+});
+
