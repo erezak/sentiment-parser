@@ -96,7 +96,6 @@ export class Parser {
       if (this.watsonCredentials!.toneAnalyzer) {
         const parsedSentiment = {} as IParsedTone;
         this.toneAnalyzer.tone({ text: sentence }, (err: Error, tone: any) => {
-          console.log(tone);
           if (err) {
             reject(err);
           } else {
