@@ -1,6 +1,6 @@
 {
   "name": "sentiment-parser",
-  "version": "0.0.105",
+  "version": "0.0.106",
   "description": "The sentiment-parser package is used to easily parse sentiments from sentences, using a simple one-liner.",
   "main": "lib/parser",
   "types": "lib/parser",
