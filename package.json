@@ -2,8 +2,8 @@
   "name": "sentiment-parser",
   "version": "0.0.105",
   "description": "The sentiment-parser package is used to easily parse sentiments from sentences, using a simple one-liner.",
-  "main": "lib/parser.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/parser",
+  "types": "lib/parser",
   "scripts": {
     "build": "tsc",
     "debug": "node --nolazy --inspect-brk=9229 lib/parser.js",
